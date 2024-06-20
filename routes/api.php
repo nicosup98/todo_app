@@ -2,11 +2,14 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\api\TodoController;
 
-Route::get('/user', function (Request $request) {
-    return $request->user();
-})->middleware('auth:sanctum');
+Route::get('/todo',[TodoController::class, "getAll"]);
+Route::get('/todo/{todoId}',[TodoController::class, "get"]);
+Route::post('/todo',[TodoController::class, 'store']);
+Route::delete('/todo/{id}', [TodoController::class, "destroy"]);
+Route::put('/todo', [TodoController::class, "update"]);
+Route::patch('/todo/{id}', [TodoController::class, "patch"]);
 
-Route::get('/hello', function () {
-    return view('welcome');
-});
+
+

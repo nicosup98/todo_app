@@ -96,6 +96,8 @@ class TodoController extends Controller {
             }
         }
 
+        $todo->save();
+
         return response()->json(
             [
                 "message" => "editado satisfactoriamente",
